@@ -9,12 +9,14 @@ import Course from './components/Course';
 import ErrorPage from './components/ErrorPage';
 import Gallery from './components/Gallery';
 import Signup from './components/Signup';
+import Footer from './components/Footer';
+import News from './components/News';
 
 const router = createBrowserRouter(
   [
     {
       path: '/', 
-      element:<div><Navbar/><Home/></div>,
+      element:<div><Navbar/><Home/><Footer/></div>,
     },
 
     {
@@ -39,13 +41,17 @@ const router = createBrowserRouter(
     {
       path:'*',
       element:<ErrorPage/>
-    }
+    },
+    {
+      path: '/news', 
+      element:<div><Navbar/><News/><Footer/></div>,
+    },
 
   ]
 );
 function App() {
   return(
-    <div className="heade">
+    <div className="bg-slate-700">
       <RouterProvider router={router}/>
     </div>
   )

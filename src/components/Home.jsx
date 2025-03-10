@@ -2,6 +2,13 @@ import React from 'react'
 import { useNavigate } from 'react-router'
 import CaraoselSlider from './CaraoselSlider';
 import Cards from './Cards';
+import News from './News';
+import CategoryFilter from './CategoryFilter';
+import Slider from './Slider';
+import Modal from './Modal';
+
+
+
 
 const Home = () => {
   const navigate = useNavigate();
@@ -9,7 +16,7 @@ const Home = () => {
     navigate('/about')
   }
   return (
-    <div className="h-screen">
+    <div className="bg-slate-950">
       <div className='flex flex-col gap-3 items-center md:flex-row bg-cover bg-[url(./public/images/Slide-001.jpg)] bg-center bg-no-repeat'>
         <div className='w-full md:w-1/2'>
           <div className='pl-3 md:pl-20'>
@@ -22,10 +29,22 @@ const Home = () => {
           <CaraoselSlider/>
         </div>
       </div>
-      <div className="flex flex-col md:flex-row h-screen bg-slate-950 gap-5">
+      <section className='px-2 md:px-5 py-20'>
         <Cards/>
+      </section>
+      <section className='bg-slate-800 px-2 py-20'>
+        <CategoryFilter/>
+      </section>
+      <section className='py-20 px-20'>
+       
+          <Slider/>
+       
+      </section>
+      <section>
+        <News/>
+      </section>
+      <Modal/>
 
-      </div>
     </div>
     
   )

@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Carousel } from "@material-tailwind/react";
+import DataItems from './DataItems';
 
 
 function CaraoselSlider() {
+  
   return (
     <Carousel transition={{ duration: 1 }} loop={'true'} className="rounded-xl">
+      
       <img
         src="./public/images/Slide-1.webp"
         alt="image 1"

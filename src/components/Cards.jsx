@@ -40,7 +40,7 @@ function Cards() {
 
   ])
   return (
-    <div className=' px-20 mt-10'>
+    <div className='md:px-15'>
       <h1 className='my-2 text-slate-500 text-3xl md:text-4xl  mb-8 relative'>Our Products
         <span className='absolute bottom-0 left-0 translate-[-50% ,-50%] w-20 bg-amber-400 h-0.5 rounded-3xl'></span>
       </h1>

@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, NavLink } from 'react-router'
-import { FaPhoneVolume } from "react-icons/fa";
-import { CiMail } from "react-icons/ci";
+import { FaPhoneVolume,FaUser } from "react-icons/fa";
+import { CiMail,CiSearch } from "react-icons/ci";
 import { SlGraph } from "react-icons/sl";
+import { FaCartShopping } from "react-icons/fa6";
 
-import MenulistBar from './MenulistBar'
+
 
 
 const Navbar = () => {
+  const [open, setOpen] = useState(false);
+  
   return (
     <>
     <div className='@container  bg-slate-800'>
@@ -19,19 +22,46 @@ const Navbar = () => {
         </div>
       </div>
     </div>
-      <div className="block md:flex justify-between bg-slate-950 pl-2 pr-2 md:pl-20 md:pr-20">
-        <ul className='flex gap-5'>
-            <li><NavLink to='/' className={({isActive})=>isActive? 'text-white font-medium py-4 block uppercase':"font-medium  text-white py-4 block uppercase"}>Home</NavLink></li>
-            <li><NavLink to='/contact' className={({isActive})=>isActive? 'text-white font-medium py-4 block uppercase':"font-medium  text-white py-4 block uppercase"}>Contact</NavLink></li>
-            <li><NavLink to='/about' className={({isActive})=>isActive? 'text-white font-medium py-4 block uppercase':"font-medium  text-white py-4 block uppercase"}>About</NavLink></li>
-            <li><NavLink to='/gallery' className={({isActive})=>isActive? 'text-white font-medium py-4 block uppercase':"font-medium  text-white py-4 block uppercase"}>Galler</NavLink></li>
-            <li><NavLink to='/signup' className={({isActive})=>isActive? 'text-white font-medium py-4 block uppercase':"font-medium  text-white py-4 block uppercase"}>Signup</NavLink></li>
-        </ul>
-        <div className=" bg-amber-400">
-          <NavLink className="flex items-center leading-13 uppercase px-5 "><SlGraph className=' text-white text-2xl rotate-0 mr-1 '/>free need analysis</NavLink>
+      <div className="flex justify-between items-center bg-slate-950 pl-2 pr-2 md:pl-20 md:pr-20">
+        <div className='bg-white text-center text-red-600  md:hidden' onClick={()=>setOpen(!open)}>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
         </div>
-        {/* <MenulistBar/> */}
+        {/* Desktop menubar */}
+        <ul className='hidden md:flex md:gap-5' >
+            <li><NavLink to='/' className={({isActive})=>isActive? 'text-amber-400 font-medium py-4 block uppercase':"font-medium  text-white py-4 block uppercase"}>Home</NavLink></li>
+            <li><NavLink to='/contact' className={({isActive})=>isActive? 'text-amber-400 font-medium py-4 block uppercase':"font-medium  text-white py-4 block uppercase"}>Contact</NavLink></li>
+            <li><NavLink to='/about' className={({isActive})=>isActive? 'text-amber-400 font-medium py-4 block uppercase':"font-medium  text-white py-4 block uppercase"}>About</NavLink></li>
+            <li><NavLink to='/gallery' className={({isActive})=>isActive? 'text-amber-400 font-medium py-4 block uppercase':"font-medium  text-white py-4 block uppercase"}>Galler</NavLink></li>
+            <li><NavLink to='/signup' className={({isActive})=>isActive? 'text-amber-400 font-medium py-4 block uppercase':"font-medium  text-white py-4 block uppercase"}>Signup</NavLink></li>
+            <li><NavLink to='/news' className={({isActive})=>isActive? 'text-amber-400 font-medium py-4 block uppercase':"font-medium  text-white py-4 block uppercase"}>News</NavLink></li>
+        </ul>
+        {/* Profile panel */}
+        <div className="flex gap-3">
+          <div className="hover:bg-amber-400 hover:text-slate-900 text-white p-[10px] rounded-4xl duration-500 ease-in-out">
+            <CiSearch />
+          </div>
+          <div className="hover:bg-amber-400 hover:text-slate-900 text-white p-[10px] rounded-4xl duration-500 ease-in-out">
+          <FaCartShopping />
+          </div>
+          <div className="hover:bg-amber-400 hover:text-slate-900 text-white p-[10px] rounded-4xl duration-500 ease-in-out">
+            <FaUser />
+          </div>
+        </div>
       </div>
+
+      {/* Responsive Menubar */}
+      {open &&
+        <ul className=' block absolute bg-slate-800 z-10 h-dvh w-full pl-5 md:hidden' >
+            <li><NavLink to='/' className={({isActive})=>isActive? 'text-amber-400 font-medium py-4 block uppercase':"font-medium  text-white py-4 block uppercase"}>Home</NavLink></li>
+            <li><NavLink to='/contact' className={({isActive})=>isActive? 'text-amber-400 font-medium py-4 block uppercase':"font-medium  text-white py-4 block uppercase"}>Contact</NavLink></li>
+            <li><NavLink to='/about' className={({isActive})=>isActive? 'text-amber-400 font-medium py-4 block uppercase':"font-medium  text-white py-4 block uppercase"}>About</NavLink></li>
+            <li><NavLink to='/gallery' className={({isActive})=>isActive? 'text-amber-400 font-medium py-4 block uppercase':"font-medium  text-white py-4 block uppercase"}>Galler</NavLink></li>
+            <li><NavLink to='/signup' className={({isActive})=>isActive? 'text-amber-400 font-medium py-4 block uppercase':"font-medium  text-white py-4 block uppercase"}>Signup</NavLink></li>
+            <li><NavLink to='/news' className={({isActive})=>isActive? 'text-amber-400 font-medium py-4 block uppercase':"font-medium  text-white py-4 block uppercase"}>News</NavLink></li>
+        </ul>
+      }
         
 
 
