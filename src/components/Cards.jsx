@@ -1,6 +1,7 @@
 import React from 'react'
 import img1 from '../assets/images/almira.jpg'
 import { useState } from 'react'
+import { useNavigate } from 'react-router';
 
 
 
@@ -39,6 +40,10 @@ function Cards() {
     },
 
   ])
+  const navigat = useNavigate()
+  function handlEvent(){
+      navigat('/ProductDitails')
+  }
   return (
     <div className='md:px-15'>
       <h1 className='my-2 text-slate-500 text-3xl md:text-4xl  mb-8 relative'>Our Products
@@ -52,7 +57,7 @@ function Cards() {
                 <h1 className='text-3xl text-slate-400'>{product.name}</h1>
                 <p className='text-white '>{product.desc}</p>
                 <div className="my-3">
-                  <button  className='bg-indigo-700 text-white rounded-[14px] px-3 py-1'>Buy Now</button>
+                  <button  className='bg-indigo-700 text-white rounded-[14px] px-3 py-1' onClick={handlEvent}>Buy Now</button>
                 </div>
               </div>
             </div>

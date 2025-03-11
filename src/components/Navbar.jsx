@@ -4,12 +4,16 @@ import { FaPhoneVolume,FaUser } from "react-icons/fa";
 import { CiMail,CiSearch } from "react-icons/ci";
 import { SlGraph } from "react-icons/sl";
 import { FaCartShopping } from "react-icons/fa6";
+import { Drawer,IconButton } from '@material-tailwind/react';
 
 
 
 
 const Navbar = () => {
+  const [navOpen, setNavOpen] = useState(false);
   const [open, setOpen] = useState(false);
+  const openDrawer = () => setOpen(true);
+  const closeDrawer = () => setOpen(false);
   
   return (
     <>
@@ -23,7 +27,7 @@ const Navbar = () => {
       </div>
     </div>
       <div className="flex justify-between items-center bg-slate-950 pl-2 pr-2 md:pl-20 md:pr-20">
-        <div className='bg-white text-center text-red-600  md:hidden' onClick={()=>setOpen(!open)}>
+        <div className='bg-white text-center text-red-600  md:hidden' onClick={()=>setNavOpen(!navOpen)}>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
             <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
           </svg>
@@ -42,9 +46,28 @@ const Navbar = () => {
           <div className="hover:bg-amber-400 hover:text-slate-900 text-white p-[10px] rounded-4xl duration-500 ease-in-out">
             <CiSearch />
           </div>
-          <div className="hover:bg-amber-400 hover:text-slate-900 text-white p-[10px] rounded-4xl duration-500 ease-in-out">
+          <div className="hover:bg-amber-400 hover:text-slate-900 text-white p-[10px] rounded-4xl duration-500 ease-in-out" onClick={openDrawer}>
           <FaCartShopping />
           </div>
+          <Drawer open={open} onClose={closeDrawer}>
+          <IconButton variant="text" color="blue-gray" onClick={closeDrawer}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={2}
+              stroke="currentColor"
+              className="h-5 w-5"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </IconButton>
+            hello
+          </Drawer>
           <div className="hover:bg-amber-400 hover:text-slate-900 text-white p-[10px] rounded-4xl duration-500 ease-in-out">
             <FaUser />
           </div>
@@ -52,7 +75,7 @@ const Navbar = () => {
       </div>
 
       {/* Responsive Menubar */}
-      {open &&
+      {navOpen &&
         <ul className=' block absolute bg-slate-800 z-10 h-dvh w-full pl-5 md:hidden' >
             <li><NavLink to='/' className={({isActive})=>isActive? 'text-amber-400 font-medium py-4 block uppercase':"font-medium  text-white py-4 block uppercase"}>Home</NavLink></li>
             <li><NavLink to='/contact' className={({isActive})=>isActive? 'text-amber-400 font-medium py-4 block uppercase':"font-medium  text-white py-4 block uppercase"}>Contact</NavLink></li>

@@ -11,6 +11,7 @@ import Gallery from './components/Gallery';
 import Signup from './components/Signup';
 import Footer from './components/Footer';
 import News from './components/News';
+import ProductDitails from './components/ProductDitails';
 
 const router = createBrowserRouter(
   [
@@ -45,6 +46,10 @@ const router = createBrowserRouter(
     {
       path: '/news', 
       element:<div><Navbar/><News/><Footer/></div>,
+    },
+    {
+      path: '/ProductDitails', 
+      element:<div><Navbar/><ProductDitails/><Footer/></div>,
     },
 
   ]

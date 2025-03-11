@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import DataItems from './DataItems'
 
+
 function CategoryFilter() {
     const [items, setItems] =useState(DataItems);
     const changeItems = (categItem)=>{
@@ -9,6 +10,8 @@ function CategoryFilter() {
         });
         setItems(updateItems)
     }
+
+   
   return (
     <div className='md:px-20'>
         <div className='' >
